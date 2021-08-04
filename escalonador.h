@@ -62,8 +62,8 @@ typedef struct Fila {
 
 TFila* cria_fila(i32 tamanho_inicial);
 
-void adiciona_processo(TFila *fila, TProcesso *processo);
-TProcesso* pop_processo(TFila *fila);
+TFila* adiciona_processo(TFila *fila, TProcesso processo);
+u8 pop_processo(TFila *fila, TProcesso *out);
 TFila* cresce_fila(TFila *fila, i32 quantidade);
 
 void destroi_fila(TFila *fila);
