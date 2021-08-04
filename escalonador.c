@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Processo{
+#include "escalonador.h"
+
+typedef struct Processo {
     int numero_processo;
     int tempo_de_chegada;
     int prioridade;
@@ -9,18 +11,18 @@ typedef struct Processo{
     int memoria;
     int unidade_disco;
     struct Processo *prox;
-}TProcesso;
+} TProcesso;
 
-typedef struct Recursos{
+typedef struct Recursos {
     int cpu1;
     int cpu2;
     int cpu3;
     int cpu4;
     int memoria;
     int unidade_disco;
-}TRecursos;
+} TRecursos;
 
 typedef struct fila {
     TProcesso *inicio;
     TProcesso *fim;
-}TFila;
+} TFila;
