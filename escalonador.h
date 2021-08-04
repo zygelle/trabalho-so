@@ -21,9 +21,16 @@ typedef struct Recursos {
 } TRecursos;
 
 typedef struct Fila {
-    TProcesso *inicio;
-    TProcesso *fim;
+    TProcesso info[50];
+    int fim;
+    int inicio;
 } TFila;
 
+void adiciona_processo(TFila *fila, TProcesso *processo);
+TProcesso* pop_processo(TFila *fila);
+
+TFila* cria_fila();
+TFila* destroi_fila(TFila *fila);
+TFila* cresce_fila(TFila *velha);
 
 #endif // ESCALONADOR_H_
