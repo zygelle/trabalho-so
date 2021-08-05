@@ -1,9 +1,10 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "escalonador.h"
 
-TFila* cria_fila(int tamanho_inicial) {
+TFila* cria_fila(i32 tamanho_inicial) {
     TFila *new = (TFila*) malloc(sizeof(TFila));
     TProcesso *array_procs = (TProcesso*) malloc(sizeof(TProcesso) * tamanho_inicial);
 
@@ -68,3 +69,48 @@ void destroi_fila(TFila *fila) {
     return;
 }
 
+TFila* parsear_arquivo_entrada(char *nome) {
+    FILE *arquivo = fopen(nome, "r");
+    if (arquivo == NULL) {
+        perror("fopen");
+        exit(EXIT_FAILURE);
+    }
+
+    char *linha = NULL;
+    size_t tam = 0;
+    ssize_t qtd_lido;
+    char *token;
+
+    TFila *fila = cria_fila(50);
+
+    i32 pid = 1;
+    while ((qtd_lido = getline(&linha, &tam, arquivo)) != -1) {
+        token = strtok(linha, ", ");
+        char *info_proc_atual[5];
+        i32 i = 0;
+        while(token) {
+            info_proc_atual[i] = token;
+            token = strtok(NULL, ", ");
+            i++;
+        }
+
+        TProcesso novo_processo = {
+            .numero_processo = pid,
+            .tempo_de_chegada = atoi(info_proc_atual[0]),
+            .prioridade = atoi(info_proc_atual[1]),
+            .tempo_de_processador = atoi(info_proc_atual[2]),
+            .memoria = atoi(info_proc_atual[3]),
+            .unidade_disco = atoi(info_proc_atual[4]),
+            .prox = NULL
+        };
+
+        fila = adiciona_processo(fila, novo_processo);
+
+        pid++;
+    }
+
+    free(linha);
+    fclose(arquivo);
+
+    return fila;
+}

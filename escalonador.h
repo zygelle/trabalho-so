@@ -68,4 +68,6 @@ TFila* cresce_fila(TFila *fila, i32 quantidade);
 
 void destroi_fila(TFila *fila);
 
+TFila* parsear_arquivo_entrada(char *filename);
+
 #endif // ESCALONADOR_H_
