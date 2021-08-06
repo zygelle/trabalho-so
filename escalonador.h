@@ -41,7 +41,6 @@ typedef struct Processo {
     i32 tempo_de_processador;
     i32 memoria;
     i32 unidade_disco;
-    struct Processo *prox;
 } TProcesso;
 
 typedef struct Recursos {

@@ -76,41 +76,29 @@ TFila* parsear_arquivo_entrada(char *nome) {
         exit(EXIT_FAILURE);
     }
 
-    char *linha = NULL;
-    size_t tam = 0;
-    ssize_t qtd_lido;
-    char *token;
-
     TFila *fila = cria_fila(50);
 
+    u32 arrival, priority, cpu_time, mem, disk;
     i32 pid = 1;
-    while ((qtd_lido = getline(&linha, &tam, arquivo)) != -1) {
-        token = strtok(linha, ", ");
-        char *info_proc_atual[5];
-        i32 i = 0;
-        while(token) {
-            info_proc_atual[i] = token;
-            token = strtok(NULL, ", ");
-            i++;
-        }
-
+    while (
+        fscanf(
+            arquivo,
+            "%i, %i, %i, %i, %i",
+            &arrival, &priority, &cpu_time, &mem, &disk
+        ) != EOF
+    ) {
         TProcesso novo_processo = {
             .numero_processo = pid,
-            .tempo_de_chegada = atoi(info_proc_atual[0]),
-            .prioridade = atoi(info_proc_atual[1]),
-            .tempo_de_processador = atoi(info_proc_atual[2]),
-            .memoria = atoi(info_proc_atual[3]),
-            .unidade_disco = atoi(info_proc_atual[4]),
-            .prox = NULL
+            .tempo_de_chegada = arrival,
+            .prioridade = priority,
+            .tempo_de_processador = cpu_time,
+            .memoria = mem,
+            .unidade_disco = disk,
         };
-
         fila = adiciona_processo(fila, novo_processo);
-
         pid++;
     }
 
-    free(linha);
     fclose(arquivo);
-
     return fila;
 }
