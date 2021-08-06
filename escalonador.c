@@ -16,40 +16,47 @@ TFila* cria_fila(i32 tamanho_inicial) {
     return new;
 }
 
-TFila* adiciona_processo(TFila *fila, TProcesso processo) {
-    if (fila->fim == (fila->tamanho) - 1) {
-        TFila *nova = cresce_fila(fila, 10);
-
-        nova->fim += 1;
-        nova->itens[nova->fim] = processo;
-
-        return nova;
+void adiciona_processo(TFila *fila, TProcesso processo) {
+    if (fila->fim == (fila->tamanho - 1)) {
+        cresce_fila(fila, 10);
+        fila->fim += 1;
+        fila->itens[fila->fim] = processo;
     } else {
         fila->fim += 1;
         fila->itens[fila->fim] = processo;
-
-        return fila;
     }
 }
 
 // NOTE(Geraldo)
-// Retorna 0 no sucesso e > 0 caso falhe.
+// Retorna 0 no sucesso e >0 caso falhe.
 // To usando o padrão do linux nesse caso.
 u8 pop_processo(TFila *fila, TProcesso *out) {
+    // Caso estiver vazia
     if (fila->fim == -1) {
         return 1;
     }
 
-    TProcesso atual = fila->itens[fila->fim];
+    // Caso for o último item da fila
+    if (fila->inicio == fila->fim) {
+        TProcesso atual = fila->itens[fila->inicio];
 
-    fila->fim -= 1;
+        fila->inicio = 0;
+        fila->fim = -1;
+        *out = atual;
+
+        return 0;
+    }
+
+    TProcesso atual = fila->itens[fila->inicio];
+
+    fila->inicio += 1;
 
     *out = atual;
 
     return 0;
 }
 
-TFila* cresce_fila(TFila *fila, i32 quantidade) {
+void cresce_fila(TFila *fila, i32 quantidade) {
     i32 tamanho_novo = fila->tamanho + quantidade;
     TProcesso *new_procs = (TProcesso*) malloc(sizeof(TProcesso) * tamanho_novo);
 
@@ -59,8 +66,6 @@ TFila* cresce_fila(TFila *fila, i32 quantidade) {
     free(fila->itens);
     fila->itens = new_procs;
     fila->tamanho = tamanho_novo;
-
-    return fila;
 }
 
 void destroi_fila(TFila *fila) {
@@ -95,7 +100,7 @@ TFila* parsear_arquivo_entrada(char *nome) {
             .memoria = mem,
             .unidade_disco = disk,
         };
-        fila = adiciona_processo(fila, novo_processo);
+        adiciona_processo(fila, novo_processo);
         pid++;
     }
 
