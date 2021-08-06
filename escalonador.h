@@ -44,12 +44,9 @@ typedef struct Processo {
 } TProcesso;
 
 typedef struct Recursos {
-    i32 cpu1;
-    i32 cpu2;
-    i32 cpu3;
-    i32 cpu4;
-    i32 memoria;
-    i32 unidade_disco;
+    i32 cpus;
+    i32 mem;
+    i32 disks;
 } TRecursos;
 
 typedef struct Fila {
@@ -61,12 +58,19 @@ typedef struct Fila {
 
 TFila* cria_fila(i32 tamanho_inicial);
 
-TFila* adiciona_processo(TFila *fila, TProcesso processo);
+void adiciona_processo(TFila *fila, TProcesso processo);
 u8 pop_processo(TFila *fila, TProcesso *out);
-TFila* cresce_fila(TFila *fila, i32 quantidade);
+void cresce_fila(TFila *fila, i32 quantidade);
 
 void destroi_fila(TFila *fila);
 
 TFila* parsear_arquivo_entrada(char *filename);
+
+
+//NOTE(Geraldo): pn = prioridade n
+typedef struct FilasDeChegada {
+    TFila *p0;
+    TFila *p1;
+} TFilasDeChegada;
 
 #endif // ESCALONADOR_H_
