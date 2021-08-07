@@ -3,7 +3,7 @@
 
 #include "escalonador.h"
 
-int main (void) {
+int main(void) {
     // inicializa "computador"
     TRecursos pc = {
         .cpus = 4,
@@ -18,11 +18,7 @@ int main (void) {
     // pelo arrival time.
     TFila *arrived = parsear_arquivo_entrada("entrada_teste.txt");
 
-    TProcesso proc = {};
-
-    while (pop_processo(arrived, &proc) == 0) {
-        printf("%i\n", proc.tempo_de_chegada);
-    }
+    TFilasDePrioridade filas = gerar_filas_prioridades(arrived);
 
     destroi_fila(arrived);
 

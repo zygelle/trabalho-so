@@ -56,6 +56,10 @@ u8 pop_processo(TFila *fila, TProcesso *out) {
     return 0;
 }
 
+TProcesso peek_processo(TFila *fila) {
+    return fila->itens[fila->inicio];
+}
+
 void cresce_fila(TFila *fila, i32 quantidade) {
     i32 tamanho_novo = fila->tamanho + quantidade;
     TProcesso *new_procs = (TProcesso*) malloc(sizeof(TProcesso) * tamanho_novo);
@@ -106,4 +110,22 @@ TFila* parsear_arquivo_entrada(char *nome) {
 
     fclose(arquivo);
     return fila;
+}
+
+TFilasDePrioridade gerar_filas_prioridades(TFila *fila) {
+    TFila *p0 = cria_fila(fila->tamanho);
+    TFila *p1 = cria_fila(fila->tamanho);
+    TProcesso proc = {};
+
+    while (pop_processo(fila, &proc) == 0) {
+        if (proc.prioridade == 0) adiciona_processo(p0, proc);
+        else if (proc.prioridade == 1) adiciona_processo(p1, proc);
+    }
+
+    TFilasDePrioridade resp = {
+        .p0 = p0,
+        .p1 = p1,
+    };
+
+    return resp;
 }

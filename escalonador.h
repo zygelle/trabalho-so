@@ -60,6 +60,7 @@ TFila* cria_fila(i32 tamanho_inicial);
 
 void adiciona_processo(TFila *fila, TProcesso processo);
 u8 pop_processo(TFila *fila, TProcesso *out);
+TProcesso peek_processo(TFila *fila);
 void cresce_fila(TFila *fila, i32 quantidade);
 
 void destroi_fila(TFila *fila);
@@ -68,9 +69,11 @@ TFila* parsear_arquivo_entrada(char *filename);
 
 
 //NOTE(Geraldo): pn = prioridade n
-typedef struct FilasDeChegada {
+typedef struct FilasDePrioridade {
     TFila *p0;
     TFila *p1;
-} TFilasDeChegada;
+} TFilasDePrioridade;
+
+TFilasDePrioridade gerar_filas_prioridades(TFila *fila);
 
 #endif // ESCALONADOR_H_
