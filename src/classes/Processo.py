@@ -11,20 +11,27 @@ class Processo:
     memoria: int
     unidade_disco: int
 
-    def liberaProcesso(self, recursos: Recursos):
-        recursos._liberaDisco(self.unidade_disco)
-        recursos._liberaMemoria(self.memoria)
-        recursos._liberaCPU()
+    def termina(self, recursos: Recursos):
+        recursos._libera_disco(self.unidade_disco)
+        recursos._libera_memoria(self.memoria)
+        recursos._libera_cpu()
+    
+    def executa(self, recurso: Recursos) -> bool:
+        if not recurso.aloca_cpu():
+            return False
+        if not recurso.aloca_disco(self.unidade_disco):
+            recurso._libera_cpu()
+            return False
+        return True   
 
+    def aloca(self, recurso: Recursos) -> bool:
+        if not recurso.aloca_memoria(self.memoria):
+            return False
+        return True
 
-def alocaProcesso(processo: Processo, recurso: Recursos) -> Processo:
-    if not recurso.alocaCPU():
-        return None
-    if not recurso.alocaDisco(processo.unidade_disco):
-        recurso._liberaCPU()
-        return None
-    if not recurso.alocaMemoria(processo.memoria):
-        recurso._liberaCPU()
-        recurso._liberaMemoria(processo.unidade_disco)
-        return None
-    return processo
+    def bloqueia(self, recursos: Recursos):
+        recursos._libera_cpu()
+        recursos._libera_disco(self.unidade_disco)
+
+    def libera(self, recursos: Recursos):
+        recursos._libera_memoria(self.memoria)
