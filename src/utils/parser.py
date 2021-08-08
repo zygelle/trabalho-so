@@ -1,7 +1,7 @@
 from classes.Processo import Processo
 
 
-def parseTxt(caminho: str) -> list[Processo]:
+def txtParaListaDeProcessos(caminho: str) -> list[Processo]:
     arquivo = open(caminho, "r")
     linhas = arquivo.readlines()
     listaProcessos: list[Processo] = []

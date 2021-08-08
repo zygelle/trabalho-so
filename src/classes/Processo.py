@@ -15,14 +15,14 @@ class Processo:
         recursos._libera_disco(self.unidade_disco)
         recursos._libera_memoria(self.memoria)
         recursos._libera_cpu()
-    
+
     def executa(self, recurso: Recursos) -> bool:
         if not recurso.aloca_cpu():
             return False
         if not recurso.aloca_disco(self.unidade_disco):
             recurso._libera_cpu()
             return False
-        return True   
+        return True
 
     def aloca(self, recurso: Recursos) -> bool:
         if not recurso.aloca_memoria(self.memoria):
