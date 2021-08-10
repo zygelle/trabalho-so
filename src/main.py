@@ -1,3 +1,5 @@
+from classes.Fcfs import Fcfs
+from classes.Feedback import Feedback
 from classes.Processo import Processo
 from classes.Recursos import Recursos
 from enum import Enum
@@ -29,22 +31,33 @@ class UserOptions:
     )
 
 
-def mostraInterfacePrincipal(
-    processos: Processo, recursos: Recursos, opts: UserOptions
-) -> None:
+def mostraInterfacePrincipal(fcfs: Fcfs, recursos: Recursos, opts: UserOptions) -> None:
     print(
         "Recursos atuais: cpu {}, mem {}, discos {}".format(
             recursos.cpus, recursos.memoria, recursos.discos
         )
     )
     print("Momento atual: {}".format(opts.momento_atual))
-    print("Processos entrando:")
-    for p in processos:
+    print()
+
+    if fcfs.fila:
+        print("Processos entrando:")
+        for p in fcfs.fila:
+            print(
+                "pid {}, memoria {}, disco {}".format(
+                    p.numero_processo, p.memoria, p.unidade_disco
+                )
+            )
+        print()
+
+    print("Processos executando:")
+    for p in recursos.executando:
         print(
             "pid {}, memoria {}, disco {}".format(
                 p.numero_processo, p.memoria, p.unidade_disco
             )
         )
+    print()
 
     print("Filas:")
 
@@ -100,10 +113,12 @@ def popProcessosNoMomento(
 
 def main():
     opts = UserOptions()
-    recursos = Recursos()
+    recursos = Recursos(executando=[])
     processos = txtParaListaDeProcessos(ENTRY_FILE)
+    fcfs = Fcfs(fila=[])
+    feedback = Feedback([], [], [], [], [])
 
-    mostraInterfacePrincipal([], recursos, opts)
+    mostraInterfacePrincipal(fcfs, recursos, opts)
     while opts.executando:
         processaInputUsuario(opts)
 
@@ -114,7 +129,11 @@ def main():
 
                 procs = popProcessosNoMomento(processos, opts.momento_atual)
 
-                mostraInterfacePrincipal(procs[1], recursos, opts)
+                fcfs.adiciona_processo(procs[0], recursos)
+
+                mostraInterfacePrincipal(fcfs, recursos, opts)
+
+                fcfs.processa(recursos, feedback)
 
         elif cmd == Comando.HELP:
             mostraAjuda()

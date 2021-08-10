@@ -3,7 +3,10 @@ from dataclasses import dataclass
 
 @dataclass(init=True)
 class Recursos:
+    executando: list
+
     cpus: int = 4
+    max_cpus: int = cpus
     memoria: int = 16000
     discos: int = 4
 
@@ -33,3 +36,11 @@ class Recursos:
 
     def _libera_disco(self, numeroDiscos: int):
         self.discos += numeroDiscos
+
+    # não botei o tipo do processo aqui pq ele tá reclamando de dep cíclica
+    def adiciona_processo_execucao(self, processo) -> bool:
+        if len(self.executando) >= self.max_cpus:
+            return False
+
+        self.executando.append(processo)
+        return True
