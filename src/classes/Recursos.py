@@ -44,3 +44,9 @@ class Recursos:
 
         self.executando.append(processo)
         return True
+
+    def executa(self):
+        for i in range(len(self.executando)):
+            self.executando[i].passarTempo(self)
+            if (self.executando[i].tempo_de_processador == -1):
+                self.executando.pop(i)
