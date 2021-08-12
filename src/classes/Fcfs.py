@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from classes.Feedback import Feedback
 
 from classes.Recursos import Recursos
@@ -7,7 +7,7 @@ from .Processo import Processo
 
 @dataclass(init=True)
 class Fcfs:
-    fila: list[Processo]
+    fila: list[Processo] = field(default_factory=list)
 
     def adiciona_processo(self, processo: list[Processo], recursos: Recursos) -> None:
         for p in processo:
