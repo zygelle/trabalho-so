@@ -10,6 +10,7 @@ class Processo:
     tempo_de_processador: int
     memoria: int
     unidade_disco: int
+    inicio_execucao: int = 0
 
     def termina(self, recursos: Recursos):
         recursos._libera_disco(self.unidade_disco)
@@ -35,3 +36,8 @@ class Processo:
 
     def libera(self, recursos: Recursos):
         recursos._libera_memoria(self.memoria)
+
+    def passarTempo(self, recursos: Recursos) -> bool:
+        self.tempo_de_processador -= 1
+        if self.tempo_de_processador == -1:
+            self.termina(recursos)

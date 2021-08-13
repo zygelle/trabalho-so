@@ -44,3 +44,14 @@ class Recursos:
 
         self.executando.append(processo)
         return True
+
+    def processa(self):
+        for i in range(len(self.executando) - 1, -1, -1):
+            self.executando[i].passarTempo(self)
+            if self.executando[i].tempo_de_processador == -1:
+                self.executando.pop(i)
+
+    def checaPossibilidadeAlocaDisco(self, processo):
+        if self.discos - processo.unidade_disco >= 0:
+            return True
+        return False
