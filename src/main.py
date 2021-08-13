@@ -13,6 +13,7 @@ ENTRY_FILE = os.path.join(ROOT_DIR, "entrada_teste.txt")
 
 class Comando(Enum):
     PROX = 1
+    CLEAR = 2
     HELP = 98
     QUIT = 99
 
@@ -24,6 +25,8 @@ class UserOptions:
     comandos_validos: tuple[str] = (
         "p",
         "prox",
+        "cls",
+        "clear",
         "q",
         "quit",
         "h",
@@ -92,6 +95,8 @@ def processaInputUsuario(opts: UserOptions) -> None:
             opts.comando_atual = (Comando.PROX, [qtd_tempo])
         except:
             opts.comando_atual = (Comando.PROX, [1])
+    elif user_in[0] == "cls" or user_in[0] == "clear":
+        opts.comando_atual = (Comando.CLEAR, [])
     elif user_in[0] == "q" or user_in[0] == "quit":
         opts.comando_atual = (Comando.QUIT, [])
     elif user_in[0] == "h" or user_in[0] == "help":
@@ -100,6 +105,7 @@ def processaInputUsuario(opts: UserOptions) -> None:
 
 def mostraAjuda() -> None:
     print("prox (p) <quantidade>: avança a quantidade de tempo especificada")
+    print("clear (cls): limpa a tela")
     print("quit (q): fecha o programa")
     print("help (h): mostra esse menu")
     print()
@@ -153,6 +159,8 @@ def main():
                 feedback.processa(recursos, opts.momento_atual)
                 recursos.processa()
 
+        elif cmd == Comando.CLEAR:
+            os.system('cls||clear')
         elif cmd == Comando.HELP:
             mostraAjuda()
         elif cmd == Comando.QUIT:
