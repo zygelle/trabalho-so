@@ -69,11 +69,11 @@ class Feedback:
             for i in range(recursos.max_cpus):
                 atual_exec = recursos.executando[i]
                 if atual_exec.prioridade == 1:
-                    p1.append(i)
+                    p1.append(atual_exec)
 
             for processo in p1:
                 if momento_atual > processo.inicio_execucao + self.quantum:
-                    self.para_processo(processo)
+                    self.para_processo(processo, recursos)
                     recursos.executando.remove(processo)
                     if len(self.fila0) > 0:
                         self.insere_na_fila_certa(self.fila0, recursos, momento_atual)

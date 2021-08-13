@@ -45,11 +45,11 @@ class Fcfs:
                 self.fila[0].executa(recursos)
                 recursos.executando.append(self.fila.pop(0))
         else:
-            p1:list[Processo] = []
+            p1: list[Processo] = []
             for i in range(recursos.max_cpus):
                 atual_exec = recursos.executando[i]
                 if atual_exec.prioridade == 1:
-                    p1.append(i)
+                    p1.append(atual_exec)
 
             for processo in p1:
                 if not self.fila:
