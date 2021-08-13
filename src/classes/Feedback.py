@@ -35,3 +35,6 @@ class Feedback:
     
     def bloqueia_processo_disco(self, processo: Processo) -> None:
         self.bloqueado_disco.append(processo)
+
+    def processa(recursos: Recursos) -> None:
+        pass

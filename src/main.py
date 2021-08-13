@@ -151,6 +151,7 @@ def main():
                 procs[0].clear()
 
                 fcfs.processa(recursos, feedback)
+                feedback.processa(recursos)
 
                 recursos.executa()
 
