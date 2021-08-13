@@ -31,7 +31,22 @@ class UserOptions:
     )
 
 
-def mostraInterfacePrincipal(fcfs: Fcfs, recursos: Recursos, opts: UserOptions) -> None:
+def printFila(fila: list[Processo]):
+    for p in fila:
+        print(
+            "pid {}, memoria {}, disco {}".format(
+                p.numero_processo, p.memoria, p.unidade_disco
+            )
+        )
+    print()
+
+
+def mostraInterfacePrincipal(
+    fcfs: Fcfs,
+    recursos: Recursos,
+    opts: UserOptions,
+    procs: tuple[list[Processo], list[Processo]],
+) -> None:
     print(
         "Recursos atuais: cpu {}, mem {}, discos {}".format(
             recursos.cpus, recursos.memoria, recursos.discos
@@ -40,27 +55,27 @@ def mostraInterfacePrincipal(fcfs: Fcfs, recursos: Recursos, opts: UserOptions) 
     print("Momento atual: {}".format(opts.momento_atual))
     print()
 
-    if fcfs.fila:
+    if procs[0] or procs[1]:
         print("Processos entrando:")
-        for p in fcfs.fila:
-            print(
-                "pid {}, memoria {}, disco {}".format(
-                    p.numero_processo, p.memoria, p.unidade_disco
-                )
-            )
-        print()
+        if procs[0]:
+            printFila(procs[0])
+        else:
+            printFila(procs[1])
 
     print("Processos executando:")
     for p in recursos.executando:
         print(
-            "pid {}, memoria {}, disco {}".format(
-                p.numero_processo, p.memoria, p.unidade_disco
+            "pid {}, memoria {}, disco {}, tempo restante {}".format(
+                p.numero_processo, p.memoria, p.unidade_disco, p.tempo_de_processador
             )
         )
     print()
 
     print("Filas:")
-
+    print()
+    if fcfs.fila:
+        print("FCFS:")
+        printFila(fcfs.fila)
     print()
 
 
@@ -115,10 +130,10 @@ def main():
     opts = UserOptions()
     recursos = Recursos(executando=[])
     processos = txtParaListaDeProcessos(ENTRY_FILE)
-    fcfs = Fcfs(fila=[])
-    feedback = Feedback([], [], [], [], [])
+    fcfs = Fcfs()
+    feedback = Feedback()
 
-    mostraInterfacePrincipal(fcfs, recursos, opts)
+    mostraInterfacePrincipal(fcfs, recursos, opts, ([], []))
     while opts.executando:
         processaInputUsuario(opts)
 
@@ -129,11 +144,15 @@ def main():
 
                 procs = popProcessosNoMomento(processos, opts.momento_atual)
 
-                fcfs.adiciona_processo(procs[0], recursos)
+                mostraInterfacePrincipal(fcfs, recursos, opts, procs)
 
-                mostraInterfacePrincipal(fcfs, recursos, opts)
+                fcfs.adiciona_processo(procs[0], recursos)
+                feedback.adiciona_processo(procs[1], recursos)
+                procs[0].clear()
 
                 fcfs.processa(recursos, feedback)
+
+                recursos.executa()
 
         elif cmd == Comando.HELP:
             mostraAjuda()
