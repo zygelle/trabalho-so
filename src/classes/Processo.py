@@ -36,8 +36,8 @@ class Processo:
 
     def libera(self, recursos: Recursos):
         recursos._libera_memoria(self.memoria)
-    
+
     def passarTempo(self, recursos: Recursos) -> bool:
         self.tempo_de_processador -= 1
-        if (self.tempo_de_processador == -1):
+        if self.tempo_de_processador == -1:
             self.termina(recursos)
