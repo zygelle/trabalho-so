@@ -16,8 +16,8 @@ class Feedback:
     def adiciona_processo(self, processo: list[Processo], recursos: Recursos) -> None:
         for p in processo:
             if (p.aloca(recursos)):
-                self.fila0.append(processo)
-                self.proxFila1.append(processo.numero_processo)
+                self.fila0.append(p)
+                self.proxFila1.append(p.numero_processo)
             else:
                 self.bloqueado_memoria.append(p)
     

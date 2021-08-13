@@ -146,7 +146,7 @@ def main():
 
                 mostraInterfacePrincipal(fcfs, recursos, opts, procs)
 
-                fcfs.adiciona_processo(procs[0], recursos)
+                fcfs.adiciona_processo(procs[0], recursos, feedback)
                 feedback.adiciona_processo(procs[1], recursos)
                 procs[0].clear()
 
