@@ -46,7 +46,7 @@ class Recursos:
         return True
 
     def executa(self):
-        for i in range(len(self.executando)):
+        for i in range(len(self.executando) - 1, -1, -1):
             self.executando[i].passarTempo(self)
             if (self.executando[i].tempo_de_processador == -1):
                 self.executando.pop(i)
