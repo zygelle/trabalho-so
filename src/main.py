@@ -37,8 +37,8 @@ class UserOptions:
 def printFila(fila: list[Processo]):
     for p in fila:
         print(
-            "pid {}, memoria {}, disco {}".format(
-                p.numero_processo, p.memoria, p.unidade_disco
+            "pid {}, prioridade {}, memoria {}, disco {}".format(
+                p.numero_processo, p.prioridade, p.memoria, p.unidade_disco
             )
         )
     print()
@@ -46,6 +46,7 @@ def printFila(fila: list[Processo]):
 
 def mostraInterfacePrincipal(
     fcfs: Fcfs,
+    feedback: Feedback,
     recursos: Recursos,
     opts: UserOptions,
     procs: tuple[list[Processo], list[Processo]],
@@ -68,18 +69,46 @@ def mostraInterfacePrincipal(
     print("Processos executando:")
     for p in recursos.executando:
         print(
-            "pid {}, memoria {}, disco {}, tempo restante {}".format(
-                p.numero_processo, p.memoria, p.unidade_disco, p.tempo_de_processador
+            "pid {}, prioridade {}, memoria {}, disco {}, tempo restante {}, {}".format(
+                p.numero_processo,
+                p.prioridade,
+                p.memoria,
+                p.unidade_disco,
+                p.tempo_de_processador,
+                p.inicio_execucao,
             )
         )
     print()
 
-    print("Filas:")
-    print()
-    if fcfs.fila:
-        print("FCFS:")
-        printFila(fcfs.fila)
-    print()
+    if feedback.tem_fila() or fcfs.tem_fila():
+        print("Filas:")
+
+        if feedback.tem_fila():
+            print("=== Feedback:")
+        if feedback.fila0:
+            print("====== Q0:")
+            printFila(feedback.fila0)
+        if feedback.fila1:
+            print("====== Q1:")
+            printFila(feedback.fila1)
+        if feedback.fila2:
+            print("====== Q2:")
+            printFila(feedback.fila2)
+        if feedback.bloqueado_memoria:
+            print("====== Suspenso por memoria:")
+            printFila(feedback.bloqueado_memoria)
+        if feedback.bloqueado_disco:
+            print("====== Suspenso por disco:")
+            printFila(feedback.bloqueado_disco)
+        if fcfs.tem_fila():
+            print("=== FCFS:")
+        if fcfs.fila:
+            print("====== Fila:")
+            printFila(fcfs.fila)
+            print()
+        if fcfs.bloqueado_memoria:
+            print("====== Suspenso por memoria:")
+            printFila(fcfs.bloqueado_memoria)
 
 
 def processaInputUsuario(opts: UserOptions) -> None:
@@ -139,7 +168,7 @@ def main():
     fcfs = Fcfs()
     feedback = Feedback()
 
-    mostraInterfacePrincipal(fcfs, recursos, opts, ([], []))
+    mostraInterfacePrincipal(fcfs, feedback, recursos, opts, ([], []))
     while opts.executando:
         processaInputUsuario(opts)
 
@@ -150,17 +179,19 @@ def main():
 
                 procs = popProcessosNoMomento(processos, opts.momento_atual)
 
-                mostraInterfacePrincipal(fcfs, recursos, opts, procs)
+                mostraInterfacePrincipal(fcfs, feedback, recursos, opts, procs)
+
+                fcfs.checa_bloqueados(recursos, feedback)
 
                 fcfs.adiciona_processo(procs[0], recursos, feedback)
                 feedback.adiciona_processo(procs[1], recursos)
 
                 fcfs.processa(recursos, feedback)
-                feedback.processa(recursos, opts.momento_atual)
+                feedback.processa(recursos, opts.momento_atual, len(procs[1]))
                 recursos.processa()
 
         elif cmd == Comando.CLEAR:
-            os.system('cls||clear')
+            os.system("cls||clear")
         elif cmd == Comando.HELP:
             mostraAjuda()
         elif cmd == Comando.QUIT:
