@@ -14,6 +14,15 @@ class Feedback:
     proxFila2: list[int] = field(default_factory=list)
     quantum: int = 2
 
+    def tem_fila(self) -> bool:
+        return (
+            self.fila0
+            or self.fila1
+            or self.fila2
+            or self.bloqueado_memoria
+            or self.bloqueado_disco
+        )
+
     def adiciona_processo(self, processos: list[Processo], recursos: Recursos) -> None:
         for processo in processos:
             if processo.aloca(recursos):
@@ -44,7 +53,7 @@ class Feedback:
     def insere_na_fila_certa(
         self, fila: list[Processo], recursos: Recursos, momento_atual: int
     ) -> None:
-        if recursos.checaPossibilidadeAlocaDisco(fila[0]):
+        if recursos.checa_possibilidade_aloca_disco(fila[0]):
             processo = fila.pop(0)
             processo.executa(recursos)
             processo.inicio_execucao = momento_atual
@@ -52,7 +61,12 @@ class Feedback:
         else:
             self.bloqueia_processo_disco(fila.pop(0))
 
-    def processa(self, recursos: Recursos, momento_atual: int) -> None:
+    def checa_bloqueados(self, recursos: Recursos):
+        pass
+
+    def processa(
+        self, recursos: Recursos, momento_atual: int, qtd_processos: int
+    ) -> None:
         if len(self.fila0) == 0 and len(self.fila1) == 0 and len(self.fila2) == 0:
             return
 
@@ -71,13 +85,17 @@ class Feedback:
                 if atual_exec.prioridade == 1:
                     p1.append(atual_exec)
 
-            for processo in p1:
-                if momento_atual > processo.inicio_execucao + self.quantum:
-                    self.para_processo(processo, recursos)
-                    recursos.executando.remove(processo)
-                    if len(self.fila0) > 0:
-                        self.insere_na_fila_certa(self.fila0, recursos, momento_atual)
-                    elif len(self.fila1) > 0:
-                        self.insere_na_fila_certa(self.fila1, recursos, momento_atual)
-                    elif len(self.fila2) > 0:
-                        self.insere_na_fila_certa(self.fila2, recursos, momento_atual)
+            for i in range(
+                qtd_processos + len(self.fila0) + len(self.fila1) + len(self.fila2)
+            ):
+                if i < recursos.cpus:
+                    processo = p1[i]
+                    if momento_atual > processo.inicio_execucao + self.quantum:
+                        self.para_processo(processo, recursos)
+                        recursos.executando.remove(processo)
+                        if len(self.fila0) > 0:
+                            self.insere_na_fila_certa(self.fila0, recursos, momento_atual)
+                        elif len(self.fila1) > 0:
+                            self.insere_na_fila_certa(self.fila1, recursos, momento_atual)
+                        elif len(self.fila2) > 0:
+                            self.insere_na_fila_certa(self.fila2, recursos, momento_atual)

@@ -10,7 +10,7 @@ class Processo:
     tempo_de_processador: int
     memoria: int
     unidade_disco: int
-    inicio_execucao: int = 0
+    inicio_execucao: int = -1
 
     def termina(self, recursos: Recursos):
         recursos._libera_disco(self.unidade_disco)

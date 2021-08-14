@@ -51,7 +51,13 @@ class Recursos:
             if self.executando[i].tempo_de_processador == -1:
                 self.executando.pop(i)
 
-    def checaPossibilidadeAlocaDisco(self, processo):
+    def checa_possibilidade_aloca_disco(self, processo):
         if self.discos - processo.unidade_disco >= 0:
             return True
         return False
+
+    def checa_possibilidade_aloca_memoria(self, processo):
+        if self.memoria - processo.memoria >= 0:
+            return True
+        return False
+    
