@@ -59,10 +59,47 @@ class Feedback:
             processo.inicio_execucao = momento_atual
             recursos.executando.append(processo)
         else:
+            fila[0].libera(recursos)
             self.bloqueia_processo_disco(fila.pop(0))
 
     def checa_bloqueados(self, recursos: Recursos):
-        pass
+        if self.bloqueado_memoria:
+            for processo in self.bloqueado_memoria:
+                if recursos.checa_possibilidade_aloca_memoria(processo):
+                    processo.aloca(recursos)
+
+                    if processo.numero_processo in self.proxFila1:
+                        self.proxFila1.remove(processo.numero_processo)
+                        self.fila1.append(processo)
+                        self.proxFila2.append(processo.numero_processo)
+                    elif processo.numero_processo in self.proxFila2:
+                        self.proxFila2.remove(processo.numero_processo)
+                        self.fila2.append(processo)
+                    else:
+                        self.fila0.append(processo)
+                        self.proxFila1.append(processo.numero_processo)
+
+                    self.bloqueado_memoria.remove(processo)
+        
+        if self.bloqueado_disco:
+            for processo in self.bloqueado_disco:
+                if recursos.checa_possibilidade_aloca_disco(processo):
+                    if recursos.checa_possibilidade_aloca_memoria(processo):
+                        processo.aloca(recursos)
+                        if processo.numero_processo in self.proxFila1:
+                            self.proxFila1.remove(processo.numero_processo)
+                            self.fila1.append(processo)
+                            self.proxFila2.append(processo.numero_processo)
+                        elif processo.numero_processo in self.proxFila2:
+                            self.proxFila2.remove(processo.numero_processo)
+                            self.fila2.append(processo)
+                        else:
+                            self.fila0.append(processo)
+                            self.proxFila1.append(processo.numero_processo)
+                    else:
+                        self.bloqueado_memoria.append(processo)
+                    self.bloqueado_disco.remove(processo)
+
 
     def processa(
         self, recursos: Recursos, momento_atual: int, qtd_processos: int

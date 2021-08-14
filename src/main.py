@@ -51,6 +51,7 @@ def mostraInterfacePrincipal(
     opts: UserOptions,
     procs: tuple[list[Processo], list[Processo]],
 ) -> None:
+    print("=========================================================================")
     print(
         "Recursos atuais: cpu {}, mem {}, discos {}".format(
             recursos.cpus, recursos.memoria, recursos.discos
@@ -69,13 +70,12 @@ def mostraInterfacePrincipal(
     print("Processos executando:")
     for p in recursos.executando:
         print(
-            "pid {}, prioridade {}, memoria {}, disco {}, tempo restante {}, {}".format(
+            "pid {}, prioridade {}, memoria {}, disco {}, tempo restante {}".format(
                 p.numero_processo,
                 p.prioridade,
                 p.memoria,
                 p.unidade_disco,
                 p.tempo_de_processador,
-                p.inicio_execucao,
             )
         )
     print()
@@ -182,6 +182,7 @@ def main():
                 mostraInterfacePrincipal(fcfs, feedback, recursos, opts, procs)
 
                 fcfs.checa_bloqueados(recursos, feedback)
+                feedback.checa_bloqueados(recursos)
 
                 fcfs.adiciona_processo(procs[0], recursos, feedback)
                 feedback.adiciona_processo(procs[1], recursos)
