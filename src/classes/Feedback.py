@@ -80,7 +80,7 @@ class Feedback:
                         self.proxFila1.append(processo.numero_processo)
 
                     self.bloqueado_memoria.remove(processo)
-        
+
         if self.bloqueado_disco:
             for processo in self.bloqueado_disco:
                 if recursos.checa_possibilidade_aloca_disco(processo):
@@ -99,7 +99,6 @@ class Feedback:
                     else:
                         self.bloqueado_memoria.append(processo)
                     self.bloqueado_disco.remove(processo)
-
 
     def processa(
         self, recursos: Recursos, momento_atual: int, qtd_processos: int
@@ -125,14 +124,20 @@ class Feedback:
             for i in range(
                 qtd_processos + len(self.fila0) + len(self.fila1) + len(self.fila2)
             ):
-                if i < recursos.cpus:
+                if i < len(p1):
                     processo = p1[i]
                     if momento_atual > processo.inicio_execucao + self.quantum:
                         self.para_processo(processo, recursos)
                         recursos.executando.remove(processo)
                         if len(self.fila0) > 0:
-                            self.insere_na_fila_certa(self.fila0, recursos, momento_atual)
+                            self.insere_na_fila_certa(
+                                self.fila0, recursos, momento_atual
+                            )
                         elif len(self.fila1) > 0:
-                            self.insere_na_fila_certa(self.fila1, recursos, momento_atual)
+                            self.insere_na_fila_certa(
+                                self.fila1, recursos, momento_atual
+                            )
                         elif len(self.fila2) > 0:
-                            self.insere_na_fila_certa(self.fila2, recursos, momento_atual)
+                            self.insere_na_fila_certa(
+                                self.fila2, recursos, momento_atual
+                            )
