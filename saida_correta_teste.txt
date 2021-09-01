@@ -1,0 +1,537 @@
+=========================================================================
+Recursos atuais: cpu 4, mem 16000, discos 4
+Momento atual: 0
+
+Processos executando:
+
+> p 35
+=========================================================================
+Recursos atuais: cpu 4, mem 16000, discos 4
+Momento atual: 1
+
+Processos entrando:
+pid 0, prioridade 0, memoria 512, disco 0
+
+Processos executando:
+
+=========================================================================
+Recursos atuais: cpu 0, mem 14784, discos 3
+Momento atual: 2
+
+Processos entrando:
+pid 4, prioridade 0, memoria 512, disco 0
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 5
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 9
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 9
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 14
+
+=========================================================================
+Recursos atuais: cpu 0, mem 12016, discos 3
+Momento atual: 3
+
+Processos entrando:
+pid 7, prioridade 0, memoria 256, disco 0
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 4
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 8
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 13
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 14
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11760, discos 4
+Momento atual: 4
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 3
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 12
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 13
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 14
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11760, discos 4
+Momento atual: 5
+
+Processos entrando:
+pid 8, prioridade 1, memoria 2000, disco 0
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 2
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 12
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 13
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 14
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 6, prioridade 1, memoria 256, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 9760, discos 4
+Momento atual: 6
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 1
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 11
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 12
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 13
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 9760, discos 4
+Momento atual: 7
+
+Processos executando:
+pid 0, prioridade 0, memoria 512, disco 0, tempo restante 0
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 10
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 11
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 12
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+
+=========================================================================
+Recursos atuais: cpu 1, mem 10272, discos 4
+Momento atual: 8
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 9
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 10
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 14
+
+Filas:
+=== Feedback:
+====== Q0:
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 9
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 8
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 9
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 13
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 14
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 10
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 7
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 8
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 12
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 13
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 11
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 6
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 7
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 12
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 8
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 3
+Momento atual: 12
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 5
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 6
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 7
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 7
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 3
+Momento atual: 13
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 4
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 5
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 6
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 6
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 3
+Momento atual: 14
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 3
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 4
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 5
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 11
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 5, prioridade 1, memoria 2000, disco 0
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q2:
+pid 1, prioridade 1, memoria 64, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 15
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 2
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 3
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 10
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 11
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q2:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 16
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 1
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 2
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 9
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 10
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q2:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+
+=========================================================================
+Recursos atuais: cpu 0, mem 10272, discos 4
+Momento atual: 17
+
+Processos executando:
+pid 4, prioridade 0, memoria 512, disco 0, tempo restante 0
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 1
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 9
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 11
+
+Filas:
+=== Feedback:
+====== Q1:
+pid 8, prioridade 1, memoria 2000, disco 0
+
+====== Q2:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+
+=========================================================================
+Recursos atuais: cpu 1, mem 10784, discos 4
+Momento atual: 18
+
+Processos executando:
+pid 7, prioridade 0, memoria 256, disco 0, tempo restante 0
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 10
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 11
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 1, prioridade 1, memoria 64, disco 0
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 1, mem 11040, discos 4
+Momento atual: 19
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 9
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 10
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 5
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 2, prioridade 1, memoria 128, disco 1
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11040, discos 3
+Momento atual: 20
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 8
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 9
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 4
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 4
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 3, prioridade 1, memoria 512, disco 0
+pid 5, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11040, discos 3
+Momento atual: 21
+
+Processos executando:
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 3
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 3
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 8
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 8
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11040, discos 3
+Momento atual: 22
+
+Processos executando:
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 2
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 7
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 7
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 2
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11040, discos 3
+Momento atual: 23
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 6
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 6
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 1
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 1
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11040, discos 3
+Momento atual: 24
+
+Processos executando:
+pid 1, prioridade 1, memoria 64, disco 0, tempo restante 0
+pid 2, prioridade 1, memoria 128, disco 1, tempo restante 0
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 5
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 5
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 2, mem 11232, discos 4
+Momento atual: 25
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 4
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 4
+
+Filas:
+=== Feedback:
+====== Q2:
+pid 6, prioridade 1, memoria 256, disco 0
+pid 8, prioridade 1, memoria 2000, disco 0
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11232, discos 4
+Momento atual: 26
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 3
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 3
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 7
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 8
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11232, discos 4
+Momento atual: 27
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 2
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 2
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 6
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 7
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11232, discos 4
+Momento atual: 28
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 1
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 1
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 5
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 6
+
+=========================================================================
+Recursos atuais: cpu 0, mem 11232, discos 4
+Momento atual: 29
+
+Processos executando:
+pid 3, prioridade 1, memoria 512, disco 0, tempo restante 0
+pid 5, prioridade 1, memoria 2000, disco 0, tempo restante 0
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 4
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 5
+
+=========================================================================
+Recursos atuais: cpu 2, mem 13744, discos 4
+Momento atual: 30
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 3
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 4
+
+=========================================================================
+Recursos atuais: cpu 2, mem 13744, discos 4
+Momento atual: 31
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 2
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 3
+
+=========================================================================
+Recursos atuais: cpu 2, mem 13744, discos 4
+Momento atual: 32
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 1
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 2
+
+=========================================================================
+Recursos atuais: cpu 2, mem 13744, discos 4
+Momento atual: 33
+
+Processos executando:
+pid 6, prioridade 1, memoria 256, disco 0, tempo restante 0
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 1
+
+=========================================================================
+Recursos atuais: cpu 3, mem 14000, discos 4
+Momento atual: 34
+
+Processos executando:
+pid 8, prioridade 1, memoria 2000, disco 0, tempo restante 0
+
+=========================================================================
+Recursos atuais: cpu 4, mem 16000, discos 4
+Momento atual: 35
+
+Processos executando:
